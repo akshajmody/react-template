@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <h1>V I </h1>
-      <List people={people} />
+      <List people={people} setPeople={setPeople} />
       <AddToList people={people} setPeople={setPeople} />
     </div>
   );

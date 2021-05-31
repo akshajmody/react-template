@@ -6,11 +6,11 @@ interface IProps {
   setPeople: React.Dispatch<React.SetStateAction<Props['people']>>;
 }
 
-const AddToList: React.FC<IProps> = () => {
+const AddToList: React.FC<IProps> = ({ people, setPeople }) => {
   const [input, setInput] = useState({
     name: '',
     age: '',
-    img: '',
+    url: '',
     note: '',
   });
 
@@ -20,7 +20,26 @@ const AddToList: React.FC<IProps> = () => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleClick = (): void => {};
+  const handleClick = (): void => {
+    if (!input.name || !input.age || !input.url) {
+      return;
+    }
+    setPeople([
+      ...people,
+      {
+        name: input.name,
+        age: parseInt(input.age),
+        url: input.url,
+        note: input.note,
+      },
+    ]);
+    setInput({
+      name: '',
+      age: '',
+      url: '',
+      note: '',
+    });
+  };
 
   return (
     <div className="AddToList">
@@ -44,9 +63,9 @@ const AddToList: React.FC<IProps> = () => {
         type="text"
         placeholder="Image Url"
         className="AddToList-input"
-        value={input.img}
+        value={input.url}
         onChange={handleChange}
-        name="img"
+        name="url"
       />
       <textarea
         placeholder="Notes"
