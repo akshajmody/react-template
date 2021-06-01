@@ -18,13 +18,7 @@ function App() {
   ]);
   const [currentStep, setCurrentStep] = useState<number>(1);
 
-  const stepsArray = [
-    'Create Account',
-    'Add Contact Info',
-    'Add Payment Details',
-    'Complete Registration',
-    'Registration Complete',
-  ];
+  const stepsArray = [' ', ' ', ' ', ' ', ' '];
 
   const handleClick = (clickType?: string): void => {
     let newStep = currentStep;
