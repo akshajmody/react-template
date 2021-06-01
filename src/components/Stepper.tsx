@@ -33,6 +33,7 @@ const Stepper: React.FC<Props> = ({ steps, currentStepNumber }) => {
                 styles['step-number'],
                 styles[`step-number-${selected ? 'active' : 'disabled'}`],
               ].join(' ')}
+              style={{ background: `${highlighted ? 'orange' : 'white'}` }}
             >
               {completed ? '✔' : idx + 1}
             </div>
