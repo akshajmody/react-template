@@ -3,7 +3,6 @@ import styles from './App.module.css';
 import AddToList from './components/AddToList';
 import List from './components/List';
 import Stepper from './components/Stepper';
-
 import { IState } from './types/People';
 import { StepProps } from './types/StepperProps';
 
