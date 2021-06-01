@@ -2,8 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './Stepper.css';
 import { StepProps as Props } from '../types/StepperProps';
 
-const Stepper: React.FC<Props> = ({ steps, currentStepNumber = 1 }) => {
-  const [stepState, setStepState] = useState<any>([]);
+interface StepState {
+  description: string;
+  completed: boolean;
+  selected: boolean;
+  highlighted: boolean;
+}
+
+const Stepper: React.FC<Props> = ({ steps, currentStepNumber }) => {
+  const [stepState, setStepState] = useState<StepState[]>([]);
 
   useEffect(() => {
     let createSteps = steps.map((step, idx) => ({

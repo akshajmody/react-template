@@ -38,7 +38,7 @@ function App() {
     <div className="App">
       <h1>V I </h1>
       <div className="stepper-container-horizontal">
-        <Stepper currentStepNumber={currentStep - 1} steps={stepsArray} />
+        <Stepper currentStepNumber={currentStep} steps={stepsArray} />
       </div>
       <List people={people} setPeople={setPeople} />
       <AddToList people={people} setPeople={setPeople} />
