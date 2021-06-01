@@ -1,6 +1,6 @@
 export interface SearchState {
   company: string;
-  address1: number;
+  address1: string;
   address2: string;
-  duns: number;
+  identifier: number | string;
 }

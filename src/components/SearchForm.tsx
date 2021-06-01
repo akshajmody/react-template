@@ -1,41 +1,76 @@
 import React, { useState } from 'react';
 import { SearchState } from '../types/SearchForm';
+import styles from '../App.module.css';
 
-const SearchForm: React.FC = () => {
+const SearchForm: React.FC<{}> = () => {
+  const [input, setInput] = useState<SearchState>({
+    company: '',
+    address1: '',
+    address2: '',
+    identifier: '',
+  });
+  const [selected, setSelected] = useState(false);
+
+  const handleClick = (): void => {
+    if (
+      !input.company ||
+      !input.address1 ||
+      !input.address2 ||
+      !input.identifier
+    ) {
+      return;
+    }
+    setSelected(true);
+    setInput({
+      company: '',
+      address1: '',
+      address2: '',
+      identifier: '',
+    });
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
   return (
-    <div className="AddToList">
+    <div className={styles['AddToList']}>
+      {selected && <div>FORM SUBMITTED</div>}
       <input
         type="text"
-        placeholder="Name"
-        className="AddToList-input"
-        value={input.name}
+        placeholder="Company"
+        className={styles['AddToList-input']}
+        value={input.company}
         onChange={handleChange}
-        name="name"
-      />
-      <input
-        type="text"
-        placeholder="Age"
-        className="AddToList-input"
-        value={input.age}
-        onChange={handleChange}
-        name="age"
+        name="company"
       />
       <input
         type="text"
-        placeholder="Image Url"
-        className="AddToList-input"
-        value={input.url}
+        placeholder="Address1"
+        className={styles['AddToList-input']}
+        value={input.address1}
         onChange={handleChange}
-        name="url"
+        name="address1"
       />
-      <textarea
-        placeholder="Notes"
-        className="AddToList-input"
-        value={input.note}
+      <input
+        type="text"
+        placeholder="Address2"
+        className={styles['AddToList-input']}
+        value={input.address2}
         onChange={handleChange}
-        name="note"
+        name="address2"
       />
-      <button className="AddToList-btn" onClick={handleClick}>
+      <input
+        type="text"
+        placeholder="Identifier"
+        className={styles['AddToList-input']}
+        value={input.identifier}
+        onChange={handleChange}
+        name="identifier"
+      />
+      <button className={styles['AddToList-btn']} onClick={handleClick}>
         Add to List
       </button>
     </div>

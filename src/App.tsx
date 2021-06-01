@@ -3,16 +3,17 @@ import styles from './App.module.css';
 import AddToList from './components/AddToList';
 import List from './components/List';
 import Stepper from './components/Stepper';
+import SearchForm from './components/SearchForm';
 import { IState } from './types/People';
 import { StepProps } from './types/StepperProps';
 
 function App() {
   const [people, setPeople] = useState<IState['people']>([
     {
-      name: 'LeBron James',
-      url: 'https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png',
-      age: 36,
-      note: 'Basketball Player',
+      name: 'Alex Mody',
+      url: 'https://avatars.githubusercontent.com/u/60197033?v=4',
+      age: 1000,
+      note: 'Software Engineer',
     },
   ]);
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -35,6 +36,7 @@ function App() {
       </div>
       <List people={people} setPeople={setPeople} />
       <AddToList people={people} setPeople={setPeople} />
+      <SearchForm />
       <div className={styles['buttons-container']}>
         <button onClick={() => handleClick()}>Previous</button>
         <button onClick={() => handleClick('next')}>Next</button>
