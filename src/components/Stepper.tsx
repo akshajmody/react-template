@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Stepper.css';
+import styles from './Stepper.module.css';
 import { StepProps as Props } from '../types/StepperProps';
 
 interface StepState {
@@ -24,27 +24,32 @@ const Stepper: React.FC<Props> = ({ steps, currentStepNumber }) => {
   }, [steps, currentStepNumber]);
 
   return (
-    <div className="stepper-wrapper-horizontal">
+    <div className={styles['stepper-wrapper-horizontal']}>
       {stepState.map(
         ({ selected, completed, highlighted, description }, idx) => (
-          <div className="step-wrapper" key={idx}>
+          <div className={styles['step-wrapper']} key={idx}>
             <div
-              className={`step-number step-number-${
-                selected ? 'active' : 'disabled'
-              }`}
+              className={[
+                styles['step-number'],
+                styles[`step-number-${selected ? 'active' : 'disabled'}`],
+              ].join(' ')}
             >
               {completed ? '✔' : idx + 1}
             </div>
             <div
-              className={`step-description ${
-                highlighted ? 'step-description-active' : ''
-              }`}
+              className={[
+                styles['step-description'],
+                `${highlighted ? styles['step-description-active'] : ''}`,
+              ].join(' ')}
             >
               {description}
             </div>
             {idx + 1 !== stepState.length && (
               <div
-                className={`divider-line divider-line-${stepState.length}`}
+                className={[
+                  styles['divider-line'],
+                  styles[`divider-line-${stepState.length}`],
+                ].join(' ')}
               ></div>
             )}
           </div>

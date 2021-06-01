@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IState as Props } from '../types/People';
+import styles from '../App.module.css';
 
 interface IProps {
   people: Props['people'];
@@ -42,11 +43,11 @@ const AddToList: React.FC<IProps> = ({ people, setPeople }) => {
   };
 
   return (
-    <div className="AddToList">
+    <div className={styles['AddToList']}>
       <input
         type="text"
         placeholder="Name"
-        className="AddToList-input"
+        className={styles['AddToList-input']}
         value={input.name}
         onChange={handleChange}
         name="name"
@@ -54,7 +55,7 @@ const AddToList: React.FC<IProps> = ({ people, setPeople }) => {
       <input
         type="text"
         placeholder="Age"
-        className="AddToList-input"
+        className={styles['AddToList-input']}
         value={input.age}
         onChange={handleChange}
         name="age"
@@ -62,19 +63,19 @@ const AddToList: React.FC<IProps> = ({ people, setPeople }) => {
       <input
         type="text"
         placeholder="Image Url"
-        className="AddToList-input"
+        className={styles['AddToList-input']}
         value={input.url}
         onChange={handleChange}
         name="url"
       />
       <textarea
         placeholder="Notes"
-        className="AddToList-input"
+        className={styles['AddToList-input']}
         value={input.note}
         onChange={handleChange}
         name="note"
       />
-      <button className="AddToList-btn" onClick={handleClick}>
+      <button className={styles['AddToList-btn']} onClick={handleClick}>
         Add to List
       </button>
     </div>

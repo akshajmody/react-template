@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import styles from './App.module.css';
 import AddToList from './components/AddToList';
 import List from './components/List';
 import Stepper from './components/Stepper';
@@ -18,7 +18,7 @@ function App() {
   ]);
   const [currentStep, setCurrentStep] = useState<number>(1);
 
-  const stepsArray = [' ', ' ', ' ', ' ', ' '];
+  const stepsArray = ['test', 'test', 'test', 'test', 'test'];
 
   const handleClick = (clickType?: string): void => {
     let newStep = currentStep;
@@ -29,14 +29,14 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <h1>V I </h1>
-      <div className="stepper-container-horizontal">
+      <div className={styles['stepper-container-horizontal']}>
         <Stepper currentStepNumber={currentStep} steps={stepsArray} />
       </div>
       <List people={people} setPeople={setPeople} />
       <AddToList people={people} setPeople={setPeople} />
-      <div className="buttons-container">
+      <div className={styles['buttons-container']}>
         <button onClick={() => handleClick()}>Previous</button>
         <button onClick={() => handleClick('next')}>Next</button>
       </div>

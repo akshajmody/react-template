@@ -1,5 +1,6 @@
 import React from 'react';
 import { IState as IProps } from '../types/People';
+import styles from '../App.module.css';
 
 interface ListType {
   people: IProps['people'];
@@ -21,13 +22,13 @@ const List: React.FC<ListType> = ({ people, setPeople }) => {
   const renderList = (): JSX.Element[] => {
     return people.map((person) => {
       return (
-        <li className="List">
-          <div className="List-header">
-            <img className="List-img" src={person.url} />
+        <li className={styles['List']}>
+          <div className={styles['List-header']}>
+            <img className={styles['List-img']} src={person.url} />
             <h2>{person.name}</h2>
           </div>
           <p>{person.age} years old</p>
-          <p className="List-note">{person.note}</p>
+          <p className={styles['List-note']}>{person.note}</p>
           <button onClick={() => remove(person.name)}>Delete</button>
         </li>
       );
